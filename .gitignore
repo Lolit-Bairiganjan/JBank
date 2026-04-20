@@ -1,0 +1,24 @@
+
+# NetBeans specific
+build/
+nbproject/private/
+dist/
+
+# Compiled Java files
+*.class
+bin/
+target/
+
+# IDE Folders
+.idea/
+.settings/
+.project
+.classpath
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Sensitive Info (MySQL credentials)
+.env
+config.properties
