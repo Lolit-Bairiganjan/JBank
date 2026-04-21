@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="498.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brainware.controller.loginController">
+<AnchorPane id="AnchorPane" prefHeight="498.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brainware.controller.registerController">
    <children>
       <HBox prefHeight="498.0" prefWidth="731.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -39,10 +39,11 @@
                         <Insets />
                      </VBox.margin>
                   </GridPane>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="430.0" spacing="20.0">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="4.0" prefWidth="506.0" />
+                  <HBox alignment="CENTER_RIGHT" prefHeight="115.0" prefWidth="430.0" spacing="20.0">
                      <children>
-                        <Hyperlink fx:id="registerButton" onAction="#handleRegisterNavigation" text="Register" />
-                        <Button mnemonicParsing="false" onAction="#handleLogin" text="Login" />
+                        <Hyperlink fx:id="loginButton" onAction="#handleLoginNavigation" text="Login" />
+                        <Button mnemonicParsing="false" onAction="#handleRegister" text="Register" />
                      </children>
                      <padding>
                         <Insets right="20.0" />

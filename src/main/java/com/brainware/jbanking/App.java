@@ -13,10 +13,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         
-        FXMLLoader loader = new FXMLLoader();
-        Parent root = loader.load(getClass().getResource("login.fxml"));
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(StageManager.showLogin());
         stage.setScene(scene);
+        stage.setTitle("JBank Application");
         stage.show();
     }
 

@@ -8,53 +8,49 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
-public class loginController {
+public class registerController{
     @FXML
     private TextField usernameField;
-    
+
     @FXML
     private PasswordField passwordField;
     
     @FXML
-    private Hyperlink registerButton;
-
+    private Hyperlink loginButton;
+    
     @FXML
-    private void handleLogin() throws SQLException{
+    private void handleRegister() throws SQLException {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        if(username == null || username.isEmpty() || password.isEmpty()){
+        if (username == null || username.isEmpty() || password.isEmpty()) {
             System.out.println("Empty username or passord field!");
             usernameField.setPromptText("Username cannot be empty!");
             passwordField.setPromptText("Password cannot be empty!");
-            return; 
+            return;
         }
+        
         UserDAO userDAO = new UserDAO();
         
-        int userId = userDAO.login(username, password);
-        
-        if(userId > 0){
-            System.out.println("Login Successfull! Welcome " + username);
-            
+        int rs = userDAO.register(username, password);
+        if (rs > 0) {
+            System.out.println("Registration Successfull! Welcome " + username);
+        } else {
+            System.out.println("Registration Failed!");
         }
-        else{
-            System.out.println("Login Failed! Invalid username or password.");
-        }
-        
+
     }
     
     @FXML
-    private void handleRegisterNavigation(ActionEvent event) {
+    private void handleLoginNavigation(ActionEvent event) {
         try {
-            Stage stage = (Stage) registerButton.getScene().getWindow();
-            Parent root = StageManager.showRegister();
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            Parent root = StageManager.showLogin();
             stage.getScene().setRoot(root);
-            stage.setTitle("JBank - Create Account");
+            stage.setTitle("JBank");
 
         } catch (IOException e) {
             System.err.println("Could not load registration screen!");
