@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class UserDAO {
     public int login(String username, String password) throws SQLException{
@@ -17,7 +18,7 @@ public class UserDAO {
                 if(rs.next()){
                     String retrivedPass = rs.getString("password");
                     
-                    if(retrivedPass.equals(password)){
+                    if(BCrypt.checkpw(password, retrivedPass)){
                         return rs.getInt("user_id");
                     }
                 }
@@ -33,8 +34,9 @@ public class UserDAO {
         try(Connection conn = DatabaseConnection.getConnection();
                 PreparedStatement pst = conn.prepareStatement(sql)){
             
+            String hashedPass = BCrypt.hashpw(password, BCrypt.gensalt());
             pst.setString(1, username);
-            pst.setString(2, password);
+            pst.setString(2, hashedPass);
             
             int rs = pst.executeUpdate();
             

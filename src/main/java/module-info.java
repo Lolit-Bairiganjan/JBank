@@ -4,6 +4,7 @@ module com.brainware.jbanking {
     requires java.sql;
     requires mysql.connector.j;
     requires java.base;
+    requires jbcrypt;
 
     opens com.brainware.jbanking to javafx.fxml;
     opens com.brainware.controller to javafx.fxml;
